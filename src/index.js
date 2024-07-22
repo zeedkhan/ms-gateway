@@ -8,4 +8,4 @@ app.listen(process.env.PORT, () => {
     console.log("Running", process.env.PORT)
 });
 
-export default app;
+module.exports = app
