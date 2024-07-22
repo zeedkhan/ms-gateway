@@ -4,7 +4,7 @@ const app = createServer();
 
 dotenv.config();
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
     console.log("Running", process.env.PORT)
 });
 
