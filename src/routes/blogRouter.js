@@ -28,7 +28,7 @@ const blogRoutes = (app) => {
     app.delete('/blog/:blogId', createProxyMiddleware({ ...blogProxy }));
 
     // duplicate seo checker
-    app.get('/blog/seo-path/:pathName', createProxyMiddleware({ ...blogProxy }))
+    app.get('/blog/path/:pathName', createProxyMiddleware({ ...blogProxy }))
 
     return app;
 }
