@@ -7,9 +7,13 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
+const FRONTEND_SERVICE = process.env.NODE_ENV === "production" ? process.env.FRONTEND_SERVICE : "http://localhost:3000"
+
 const createServer = () => {
     const app = express();
-    app.use(cors())
+    app.use(cors({
+        origin: [FRONTEND_SERVICE]
+    }))
 
     app.get("/services", (req, res) => {
         const services = {
