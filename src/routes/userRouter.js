@@ -36,6 +36,11 @@ const manageUserRoutes = (app) => {
 
     app.post("/token", createProxyMiddleware({ ...userProxy }));
 
+    // storage
+    app.post("/user/storage/:id", createProxyMiddleware({ ...userProxy }));
+    app.get("/user/storage/:id", createProxyMiddleware({ ...userProxy }));
+    app.get("/user/storage/file/:fileId", createProxyMiddleware({ ...userProxy }));
+
     return app;
 }
 

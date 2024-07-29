@@ -8,7 +8,8 @@ const uploadProxy = {
 };
 
 const manageUploadRoutes = (app) => {
-    app.post("/upload", createProxyMiddleware({ ...uploadProxy }))
+    app.post("/upload", createProxyMiddleware({ ...uploadProxy }));
+    app.post("/upload/file", createProxyMiddleware({ ...uploadProxy }));
     return app;
 }
 

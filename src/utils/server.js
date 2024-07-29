@@ -3,16 +3,19 @@ const cors = require("cors")
 const { manageUserRoutes } = require("../routes/userRouter");
 const { manageUploadRoutes } = require("../routes/uploadRouter");
 const { blogRoutes } = require("../routes/blogRouter");
+const { chatRoutes } = require("../routes/chatRouter");
+
 const dotenv = require("dotenv");
 
 dotenv.config();
 
 const FRONTEND_SERVICE = process.env.NODE_ENV === "production" ? process.env.FRONTEND_SERVICE : "http://localhost:3000"
+const SOCKET_SERVICE = process.env.SOCKET_SERVICE === "production" ? process.env.SOCKET_SERVICE : "http://localhost:8004"
 
 const createServer = () => {
     const app = express();
     app.use(cors({
-        origin: [FRONTEND_SERVICE]
+        origin: [FRONTEND_SERVICE, SOCKET_SERVICE]
     }))
 
     app.get("/services", (req, res) => {
@@ -25,7 +28,8 @@ const createServer = () => {
 
     manageUserRoutes(app);
     manageUploadRoutes(app);
-    blogRoutes(app)
+    blogRoutes(app);
+    chatRoutes(app);
 
     return app
 }
