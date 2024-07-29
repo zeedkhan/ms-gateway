@@ -15,7 +15,13 @@ const SOCKET_SERVICE = process.env.SOCKET_SERVICE === "production" ? process.env
 const createServer = () => {
     const app = express();
     app.use(cors({
-        origin: [FRONTEND_SERVICE, SOCKET_SERVICE]
+        origin: [
+            process.env.USER_SERVICE,
+            process.env.UPLOAD_SERVICE,
+            process.env.BLOG_SERVICE,
+            FRONTEND_SERVICE, 
+            SOCKET_SERVICE
+        ]
     }))
 
     app.get("/services", (req, res) => {
