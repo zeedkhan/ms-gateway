@@ -19,12 +19,7 @@ const chatRoutes = (app) => {
     app.get('/chat/:roomId', createProxyMiddleware({ ...chatProxy }));
 
     // get chat room by user id
-    app.get("/chat/user/:userId", createProxyMiddleware(
-        {
-            target: process.env.CHAT_SERVICE,
-            changeOrigin: true
-        }
-    ));
+    app.get("/chat/user/:userId", createProxyMiddleware({ ...chatProxy }));
 
     // delete chat room
     app.delete("/chat/:roomId", createProxyMiddleware({ ...chatProxy }));
