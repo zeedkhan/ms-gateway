@@ -36,11 +36,26 @@ const manageUserRoutes = (app) => {
 
     app.post("/token", createProxyMiddleware({ ...userProxy }));
 
-    // storage
     app.post("/user/storage/:id", createProxyMiddleware({ ...userProxy }));
-    app.get("/user/storage/:id", createProxyMiddleware({ ...userProxy }));
+    app.get("/user/storage/:userId", createProxyMiddleware({ ...userProxy }));
     app.get("/user/storage/file/:fileId", createProxyMiddleware({ ...userProxy }));
+    app.delete("/user/storage/file/:fileId", createProxyMiddleware({ ...userProxy }));
+    app.get("/user/storage/no-directory/:userId", createProxyMiddleware({ ...userProxy }));
 
+    app.get("/user/directory/:directoryId", createProxyMiddleware({ ...userProxy }));
+    app.put("/user/directory/:directoryId", createProxyMiddleware({ ...userProxy }));
+    app.delete("/user/directory/:directoryId", createProxyMiddleware({ ...userProxy }));
+    app.get("/user/directory/user/:userId", createProxyMiddleware({ ...userProxy }));
+    app.post("/user/directory/", createProxyMiddleware({ ...userProxy }));
+    
+    // Move object
+    app.put("/user/move/directory", createProxyMiddleware({ ...userProxy }));
+    app.put("/user/move/storage", createProxyMiddleware({ ...userProxy }));
+
+    // Search
+    app.get("/user/search/object/:searchTerm", createProxyMiddleware({ ...userProxy }));
+    app.get("/user/search/object", createProxyMiddleware({ ...userProxy }));
+    
     return app;
 }
 
