@@ -33,6 +33,14 @@ const chatRoutes = (app) => {
     // get users in chat room
     app.get("/chat/:roomId/users", createProxyMiddleware({ ...chatProxy }));
 
+
+    /* AI */
+    app.get("/chat/ai/user/:userId", createProxyMiddleware({ ...chatProxy }));
+    app.put("/chat/ai/:roomId", createProxyMiddleware({ ...chatProxy }));
+    app.delete("/chat/ai/:roomId", createProxyMiddleware({ ...chatProxy }));
+    app.get("/chat/ai/:roomId", createProxyMiddleware({ ...chatProxy }));
+    app.post("/chat/ai", createProxyMiddleware({ ...chatProxy }));
+
     return app;
 }
 

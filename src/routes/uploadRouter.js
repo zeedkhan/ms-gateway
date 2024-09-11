@@ -10,9 +10,18 @@ const uploadProxy = {
 const manageUploadRoutes = (app) => {
     app.post("/upload", createProxyMiddleware({ ...uploadProxy }));
     app.post("/upload/file", createProxyMiddleware({ ...uploadProxy }));
+
+    return app;
+};
+
+const aiRoutes = (app) => {
+    // get all chat rooms
+    app.get('/crawler/ai/search', createProxyMiddleware({ ...uploadProxy }));
+
     return app;
 }
 
 module.exports = {
-    manageUploadRoutes
+    manageUploadRoutes,
+    aiRoutes
 }

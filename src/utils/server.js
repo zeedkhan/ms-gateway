@@ -1,7 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const { manageUserRoutes } = require("../routes/userRouter");
-const { manageUploadRoutes } = require("../routes/uploadRouter");
+const { manageUploadRoutes, aiRoutes } = require("../routes/uploadRouter");
 const { blogRoutes } = require("../routes/blogRouter");
 const { chatRoutes } = require("../routes/chatRouter");
 
@@ -19,7 +19,7 @@ const createServer = () => {
             process.env.USER_SERVICE,
             process.env.UPLOAD_SERVICE,
             process.env.BLOG_SERVICE,
-            FRONTEND_SERVICE, 
+            FRONTEND_SERVICE,
             SOCKET_SERVICE
         ]
     }))
@@ -36,6 +36,7 @@ const createServer = () => {
     manageUploadRoutes(app);
     blogRoutes(app);
     chatRoutes(app);
+    aiRoutes(app);
 
     return app
 }
